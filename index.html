@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ICL @ Seoul Nat'l Univ — Intelligent Computational Imaging Lab</title>
+<meta name="description" content="The Intelligent Computational Imaging Lab (ICL) at Seoul National University builds grounded AI that sees, reasons, and acts.">
+<meta property="og:title" content="ICL @ Seoul Nat'l Univ">
+<meta property="og:description" content="Grounded AI that sees, reasons, and acts.">
+<meta property="og:type" content="website">
+<link rel="icon" href="images/logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --navy: #243D89;
+    --navy-deep: #0F0F70;
+    --ink: #1a1d24;
+    --body: #3b404a;
+    --muted: #6a707c;
+    --rule: #e3e6ee;
+    --tint: #f3f5fa;
+    --wrap: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: "Pretendard", -apple-system, "Segoe UI", "Noto Sans KR", Roboto, sans-serif;
+    color: var(--body);
+    background: #fff;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  a { color: var(--navy); text-decoration: none; border-bottom: 1px solid rgba(36,61,137,.3); }
+  a:hover { border-bottom-color: var(--navy); }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 2px; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 28px; }
+
+  /* Header */
+  header { border-bottom: 1px solid var(--rule); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 10px; border: 0; color: var(--ink); font-weight: 700; font-size: 17px; letter-spacing: -0.01em; white-space: nowrap; }
+  .brand img { height: 30px; width: auto; }
+  nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+  nav a { border: 0; color: var(--body); font-size: 15px; font-weight: 500; }
+  nav a:hover, nav a[aria-current="page"] { color: var(--navy); }
+  nav a[aria-current="page"] { font-weight: 600; }
+
+  /* Hero */
+  .hero { padding: 88px 0 56px; }
+  .hero h1 {
+    margin: 0 0 32px;
+    color: var(--ink);
+    font-size: clamp(36px, 5.6vw, 64px);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    max-width: 15ch;
+  }
+  .lede { max-width: 62ch; margin: 0; font-size: 18px; line-height: 1.65; color: var(--body); }
+  .lede + .lede { margin-top: 16px; }
+  .meta { max-width: 62ch; margin: 28px 0 0; padding-top: 22px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--muted); }
+  .meta p { margin: 0 0 6px; }
+  .join { color: var(--ink); font-weight: 500; }
+
+  /* News + photo */
+  .lower { display: grid; grid-template-columns: 7fr 5fr; gap: 56px; padding: 24px 0 88px; align-items: start; }
+  h2 { margin: 0 0 14px; color: var(--ink); font-size: 20px; font-weight: 700; letter-spacing: -0.015em; }
+  .news { list-style: none; margin: 0; padding: 0; }
+  .item { display: grid; grid-template-columns: 5.6em 1fr; column-gap: 16px; padding: 13px 0 13px 14px; border-top: 1px solid var(--rule); border-left: 3px solid transparent; }
+  .item:first-child { border-top: 0; }
+  .item.pinned { border-left-color: var(--navy); background: var(--tint); }
+  .date { color: var(--muted); font-size: 13.5px; padding-top: 2px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .text { color: var(--ink); font-size: 15.5px; }
+  details > summary { list-style: none; cursor: pointer; position: relative; padding-right: 26px; }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::after {
+    content: ""; position: absolute; right: 6px; top: 8px; width: 7px; height: 7px;
+    border-right: 1.5px solid var(--muted); border-bottom: 1.5px solid var(--muted);
+    transform: rotate(45deg); transition: transform .15s ease;
+  }
+  details[open] > summary::after { transform: rotate(-135deg); top: 12px; }
+  .papers { margin: 10px 0 2px; padding-left: 18px; font-size: 14px; line-height: 1.55; color: var(--body); }
+  .papers li { margin-bottom: 8px; }
+  .papers li:last-child { margin-bottom: 0; }
+  .more { margin: 16px 0 0 17px; font-size: 14.5px; }
+
+  figure { margin: 0; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 4px; background: var(--tint); aspect-ratio: 4 / 3; object-fit: cover; }
+  figcaption { margin-top: 10px; font-size: 13.5px; color: var(--muted); }
+
+  footer { border-top: 1px solid var(--rule); padding: 28px 0 40px; font-size: 13.5px; color: var(--muted); }
+  footer p { margin: 0 0 4px; }
+
+  @media (max-width: 860px) {
+    .bar { height: auto; flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px 0 12px; }
+    nav { width: 100%; overflow-x: auto; }
+    nav ul { gap: 20px; }
+    .hero { padding: 52px 0 40px; }
+    .lede { font-size: 17px; }
+    .lower { grid-template-columns: 1fr; gap: 40px; padding-bottom: 64px; }
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 0 20px; }
+    .item { grid-template-columns: 1fr; row-gap: 2px; }
+  }
+  @media (prefers-reduced-motion: reduce) { details > summary::after { transition: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="./"><img src="images/logo.png" alt="" onerror="this.remove()">ICL @ Seoul Nat'l Univ</a>
+    <!-- Links to the pages still on Google Sites. If the domain moves to GitHub, replace https://icl.snu.ac.kr/ with the Google Sites address. -->
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="./" aria-current="page">Home</a></li>
+        <li><a href="https://icl.snu.ac.kr/members">Members</a></li>
+        <li><a href="https://icl.snu.ac.kr/publications">Publications</a></li>
+        <li><a href="https://icl.snu.ac.kr/teaching">Teaching</a></li>
+        <li><a href="https://icl.snu.ac.kr/workshops">Workshops</a></li>
+        <li><a href="https://icl.snu.ac.kr/join-icl">Join ICL</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <h1>Grounded AI that sees, reasons, and acts.</h1>
+    <p class="lede">The Intelligent Computational Imaging Lab (ICL) is rooted in computational imaging, where rigorous mathematics grounds every image in the physics of how it was measured. That grounding now carries into learning multimodal, multiscale representations and building and adapting foundation models that stay faithful to the world they describe.</p>
+    <p class="lede">We close the loop with agents that act in the physical world and team with people, treating every input, measurement and human guidance alike, as valuable yet uncertain.</p>
+    <div class="meta">
+      <p>ICL is at the <a href="https://ece.snu.ac.kr/">Department of Electrical and Computer Engineering</a>, <a href="https://www.snu.ac.kr/">Seoul National University</a>, and is led by <a href="https://icl.snu.ac.kr/pi">Se Young Chun</a>. ICL is also affiliated with the <a href="https://gsai.snu.ac.kr/">Interdisciplinary Program in Artificial Intelligence</a>.</p>
+      <p class="join">We are looking for graduate students and undergraduate interns. <a href="https://icl.snu.ac.kr/join-icl">How to join</a></p>
+    </div>
+  </section>
+
+  <section class="wrap lower">
+    <div>
+      <h2>News</h2>
+      <ul class="news">
+        <li class="item pinned">
+          <div class="date">2026 Oct</div>
+          <div class="text">ICL has been selected for the Samsung Science &amp; Technology Program, which will support our project “Forgetting as a Fundamental Operation of Intelligence.”</div>
+        </li>
+        <li class="item">
+          <div class="date">2026 Sep</div>
+          <details class="text">
+            <summary>Three papers accepted at NeurIPS 2026, one selected as Spotlight.</summary>
+            <ul class="papers">
+              <li>H. Seo*, B. H. Lee*, M. Kim*, D. Mah, J. Lee, S. Y. Chun, “Strong Helps Weak: Directional Cross-Modal Alignment Transfer in Multi-modal LLMs” (Spotlight) [<a href="https://arxiv.org/abs/2610.04580">report</a>] [<a href="https://seohoiki3215.github.io/DCAT_project_page/">project</a>]</li>
+              <li>J. Bang, D. Choi, D. J. Mun, S. Y. Chun, “FLINT: Coupling Proximal Initialization and Bounded Stochasticity for Flow-Matching Inverse Problems”</li>
+              <li>J. Park, S. Y. Chun, M. Seok, “DictLLM: Post-training Compression of Large Language Model with Dictionary Kernels”</li>
+            </ul>
+          </details>
+        </li>
+        <li class="item">
+          <div class="date">2026 Sep</div>
+          <div class="text">Se Young Chun gave an invited keynote at the <a href="https://sites.google.com/view/beyondeuclidean/home">ECCV 2026 Beyond Euclidean Workshop</a>.</div>
+        </li>
+        <li class="item">
+          <div class="date">2026 Aug</div>
+          <div class="text">Wongi Jeong won a Youlchon AI Star award. Congratulations!</div>
+        </li>
+        <li class="item">
+          <div class="date">2026 Jun</div>
+          <details class="text">
+            <summary>“Erasing Thousands of Concepts” received the CVPR 2026 Compute Transparency Champion award.</summary>
+            <ul class="papers">
+              <li>H. Seo*, B. H. Lee*, J. Cho, S. Lim, S. Y. Chun, “Erasing Thousands of Concepts: Towards Scalable and Practical Concept Erasure for Text-to-Image Diffusion Models,” CVPR 2026. The highest recognition in CVPR’s Compute Reporting Initiative; also featured in <a href="https://www.popsci.co.kr/news/articleView.html?idxno=24647">Popular Science</a>.</li>
+            </ul>
+          </details>
+        </li>
+        <li class="item">
+          <div class="date">2026 Jun</div>
+          <details class="text">
+            <summary>One paper accepted at ECCV 2026.</summary>
+            <ul class="papers">
+              <li>J. H. Jang*, H. Kim*, C. Lee, J. J. Kim, S. Y. Chun, “HyFL-CLIP: Hyperbolic Fine-Tuning of CLIP for Robust Long-Context Understanding” [<a href="https://arxiv.org/abs/2607.00428">report</a>] [<a href="https://janeyeon.github.io/hyflclip/">project</a>]</li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+      <p class="more"><a href="https://icl.snu.ac.kr/news">See all news</a></p>
+    </div>
+
+    <figure>
+      <img src="images/group.jpg" alt="ICL members in Jeju, June 2026" width="1200" height="900">
+      <figcaption>ICL members in Jeju, June 2026</figcaption>
+    </figure>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Intelligent Computational Imaging Lab · Department of Electrical and Computer Engineering, Seoul National University</p>
+    <p>© 2026 ICL</p>
+  </div>
+</footer>
+
+</body>
+</html>
